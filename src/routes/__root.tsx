@@ -15,11 +15,11 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'Vantage Study — Practice Courses & Tutorials' },
+      { title: 'INIT Educational Consultant — Nigerian Student Study Community' },
       {
         name: 'description',
         content:
-          'Timed practice courses and tutorials with full access unlocked after a single one-time payment.',
+          'Past questions, explained answers, and course notes for Nigerian students. Unlock the INIT study library for a one-time payment of ₦15,000.',
       },
     ],
     links: [
@@ -40,7 +40,7 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en-NG">
       <head>
         <HeadContent />
       </head>
@@ -65,15 +65,16 @@ function SiteNav() {
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--rule)] bg-[var(--paper)]/90 backdrop-blur">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="font-display text-xl tracking-tight text-[var(--ink)]">
-          Vantage <span className="text-[var(--ember)] italic">Study</span>
+        <Link to="/" className="flex items-center gap-3 min-w-0" aria-label="INIT Educational Consultant home">
+          <img src="/brand/init-logo.png" alt="" width="56" height="40" className="w-14 h-10 object-cover rounded" />
+          <span className="font-sans font-bold text-[var(--ember)] leading-tight">INIT<span className="block text-[10px] sm:text-xs font-medium tracking-wide text-[var(--ink-soft)]">Educational Consultant</span></span>
         </Link>
-        <nav className="font-sans text-sm flex items-center gap-6">
+        <nav className="font-sans text-sm flex items-center gap-3 sm:gap-6">
           <Link
             to="/courses"
             className="text-[var(--ink-soft)] hover:text-[var(--ink)] transition-colors"
           >
-            Courses
+            Study library
           </Link>
           {ready && user ? (
             <button
@@ -100,8 +101,8 @@ function SiteFooter() {
   return (
     <footer className="border-t border-[var(--rule)] mt-24">
       <div className="max-w-6xl mx-auto px-6 py-10 font-sans text-sm text-[var(--ink-soft)] flex flex-col sm:flex-row items-center justify-between gap-4">
-        <span>© 2026 Vantage Study. All rights reserved.</span>
-        <span>Built for focused, exam-ready practice.</span>
+        <span>© 2026 INIT Educational Consultant. All rights reserved.</span>
+        <span>Supporting Nigerian students, one course at a time.</span>
       </div>
     </footer>
   )

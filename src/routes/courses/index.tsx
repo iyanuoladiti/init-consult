@@ -29,13 +29,15 @@ function CoursesIndex() {
       <p className="font-sans text-xs tracking-[0.2em] uppercase text-[var(--ember)] mb-3">
         Course library
       </p>
-      <h1 className="font-display text-4xl mb-4">Every course, one place.</h1>
+      <h1 className="font-display text-4xl mb-4">Your courses. Your revision space.</h1>
+
+      <p className="font-sans text-[var(--ink-soft)] mb-8 max-w-2xl">Prepare for your tests and exams with BIO 102, CHM 102, CHM 108, PHY 106, and GST 114 question collections, plus general studies lessons and an exam timetable reference.</p>
 
       {ready && hasAccess === false && (
         <div className="rise border border-[var(--ember)]/40 bg-[var(--ember)]/5 rounded-2xl p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <p className="font-sans text-sm text-[var(--ink-soft)] max-w-md">
             {user
-              ? 'Your account does not have full access yet. Unlock every lesson and study document with a one-time payment.'
+              ? 'Unlock the INIT library of past questions, course notes, and study documents with one ₦15,000 payment.'
               : 'Sign in and unlock full access to view lessons and download study documents.'}
           </p>
           <AccessButton />

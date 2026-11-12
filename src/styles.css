@@ -1,13 +1,13 @@
 @import "tailwindcss" source("../");
 
 :root {
-  --paper: #f4ede1;
-  --paper-dim: #ece2d2;
-  --ink: #211c16;
-  --ink-soft: #4a4238;
-  --rule: #d8cbb4;
-  --ember: #b5502d;
-  --ember-deep: #8a3a1f;
+  --paper: #fff7e8;
+  --paper-dim: #f2e5ce;
+  --ink: #2d2024;
+  --ink-soft: #655258;
+  --rule: #e2d1c6;
+  --ember: #970c30;
+  --ember-deep: #710b26;
   --moss: #4b5d45;
 }
 
@@ -36,7 +36,7 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 50;
-  opacity: 0.35;
+  opacity: 0.10;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 }
@@ -59,3 +59,6 @@ code {
 .rise {
   animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+:focus-visible { outline: 2px solid var(--ember); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .rise { animation: none; } }

@@ -55,7 +55,7 @@ function CoursePage() {
       {course.materials && (
         <section aria-labelledby="materials-heading" className="mb-12">
           <div className="flex items-baseline justify-between gap-4 mb-5">
-            <h2 id="materials-heading" className="font-display text-2xl">Study documents</h2>
+            <h2 id="materials-heading" className="font-display text-2xl">Past questions &amp; study resources</h2>
             <span className="font-sans text-xs text-[var(--ink-soft)]">{course.materials.length} files</span>
           </div>
           <p className="font-sans text-sm text-[var(--ink-soft)] mb-6">
@@ -114,7 +114,7 @@ function CoursePage() {
             Unlock {course.title} and everything else.
           </h2>
           <p className="font-sans text-sm text-[var(--ink-soft)] mb-6">
-            One payment gives you lifetime access to every course, lesson, and
+            One ₦15,000 payment gives you lifetime access to every INIT course, lesson, and
             study document.
           </p>
           <AccessButton />

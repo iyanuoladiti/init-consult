@@ -11,7 +11,7 @@ function CheckoutCancel() {
         <p className="font-display text-5xl text-[var(--ember-deep)] mb-6">✕</p>
         <h1 className="font-display text-3xl mb-4">Checkout cancelled.</h1>
         <p className="font-sans text-[var(--ink-soft)] mb-8">
-          No charge was made. You can try again whenever you're ready.
+          Your INIT study library is still here. You can return whenever you’re ready to unlock full access for ₦15,000.
         </p>
         <Link
           to="/"

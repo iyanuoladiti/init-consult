@@ -58,8 +58,10 @@ function LoginPage() {
           {mode === 'login' ? 'Welcome back' : 'Create your account'}
         </p>
         <h1 className="font-display text-4xl mb-8">
-          {mode === 'login' ? 'Sign in to study.' : 'Start your account.'}
+          {mode === 'login' ? 'Sign in to study.' : 'Join the INIT community.'}
         </h1>
+
+        <p className="font-sans text-sm text-[var(--ink-soft)] mb-6">Your INIT account keeps your study library in one place. Full access is a one-time ₦15,000 payment after sign-up.</p>
 
         <form onSubmit={handleSubmit} className="space-y-4 font-sans">
           {mode === 'signup' && (

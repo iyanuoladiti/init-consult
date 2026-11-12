@@ -1,3 +1,4 @@
+import { FULL_ACCESS_PRICE_LABEL } from '@/lib/pricing'
 import { useEffect, useState } from 'react'
 import { useNavigate } from '@tanstack/react-router'
 import { useIdentity } from '@/lib/identity-context'
@@ -47,7 +48,7 @@ export function AccessButton({ className = '' }: { className?: string }) {
       disabled={loading || stripeEnabled === null}
       className={`px-7 py-3 rounded-full bg-[var(--ember)] text-[var(--paper)] hover:bg-[var(--ember-deep)] transition-colors disabled:opacity-60 disabled:cursor-wait ${className}`}
     >
-      {loading ? 'Redirecting…' : 'Unlock full access — $15'}
+      {loading ? 'Redirecting…' : `Unlock full access — ${FULL_ACCESS_PRICE_LABEL}`}
     </button>
   )
 }
