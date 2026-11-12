@@ -35,8 +35,8 @@ function CoursesIndex() {
         <div className="rise border border-[var(--ember)]/40 bg-[var(--ember)]/5 rounded-2xl p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <p className="font-sans text-sm text-[var(--ink-soft)] max-w-md">
             {user
-              ? 'Your account does not have full access yet. Unlock every lesson and practice test with a one-time payment.'
-              : 'Sign in and unlock full access to view lessons and take practice tests.'}
+              ? 'Your account does not have full access yet. Unlock every lesson and study document with a one-time payment.'
+              : 'Sign in and unlock full access to view lessons and download study documents.'}
           </p>
           <AccessButton />
         </div>
@@ -61,7 +61,7 @@ function CoursesIndex() {
               {course.tagline}
             </p>
             <p className="font-sans text-xs text-[var(--ink-soft)] mt-4">
-              {course.lessons.length} lessons
+              {course.materials?.length ?? course.lessons.length} {course.materials ? 'study documents' : 'lessons'}
               {hasAccess === false && ' · locked'}
             </p>
           </Link>

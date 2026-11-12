@@ -4,9 +4,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev --port 3000",
-    "build": "vite build"
+    "build": "node scripts/prepare-materials.mjs && vite build"
   },
   "dependencies": {
+    "@netlify/blobs": "^11.1.9",
     "@netlify/database": "^1.1.0",
     "@netlify/identity": "^1.2.0",
     "@tailwindcss/vite": "4.2.2",

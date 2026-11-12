@@ -8,6 +8,7 @@ export const getAccessStatus = createServerFn({ method: 'GET' })
   .middleware([requireAuthMiddleware])
   .handler(async ({ context }) => {
     const email = context.user.email
+    if (!email) return { hasAccess: false }
     const [purchase] = await db
       .select()
       .from(purchases)

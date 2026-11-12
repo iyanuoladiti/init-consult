@@ -1,6 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
-import courses from '@/data/courses'
+import courses, { type Course } from '@/data/courses'
 import { useIdentity } from '@/lib/identity-context'
 import { getAccessStatus } from '@/lib/access'
 import { AccessButton } from '@/components/AccessButton'
@@ -15,22 +15,25 @@ export const Route = createFileRoute('/courses/$courseId')({
 })
 
 function CoursePage() {
-  const course = Route.useLoaderData()
+  const course: Course = Route.useLoaderData()
   const { user, ready } = useIdentity()
   const [hasAccess, setHasAccess] = useState<boolean | null>(null)
 
   useEffect(() => {
+    let active = true
+    setHasAccess(null)
     if (!ready) return
     if (!user) {
       setHasAccess(false)
       return
     }
     getAccessStatus()
-      .then((res) => setHasAccess(res.hasAccess))
-      .catch(() => setHasAccess(false))
+      .then((res) => { if (active) setHasAccess(res.hasAccess) })
+      .catch(() => { if (active) setHasAccess(false) })
+    return () => { active = false }
   }, [ready, user])
 
-  const unlocked = hasAccess === true
+  const unlocked = !!user && hasAccess === true
 
   return (
     <main className="max-w-4xl mx-auto px-6 py-16">
@@ -48,6 +51,35 @@ function CoursePage() {
       <p className="font-sans text-lg text-[var(--ink-soft)] max-w-2xl mb-12">
         {course.description}
       </p>
+
+      {course.materials && (
+        <section aria-labelledby="materials-heading" className="mb-12">
+          <div className="flex items-baseline justify-between gap-4 mb-5">
+            <h2 id="materials-heading" className="font-display text-2xl">Study documents</h2>
+            <span className="font-sans text-xs text-[var(--ink-soft)]">{course.materials.length} files</span>
+          </div>
+          <p className="font-sans text-sm text-[var(--ink-soft)] mb-6">
+            Original past papers and study resources. PDF files open in a PDF reader; Word documents require a compatible app.
+          </p>
+          <div className="divide-y divide-[var(--rule)] border-y border-[var(--rule)]">
+            {course.materials.map((material) => (
+              <div key={material.id} className="py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <span className="font-sans text-xs tracking-widest text-[var(--ember)]">{material.format}</span>
+                  <h3 className="font-display text-xl mt-1">{material.title}</h3>
+                </div>
+                {unlocked ? (
+                  <a href={`/api/materials/${encodeURIComponent(material.id)}`} className="font-sans text-sm rounded-full border border-[var(--ember)] px-5 py-2 hover:bg-[var(--ember)]/10 focus-visible:outline-2 focus-visible:outline-offset-4 shrink-0" aria-label={`Download ${material.title}`}>
+                    Download {material.format} ↓
+                  </a>
+                ) : (
+                  <span className="font-sans text-xs text-[var(--ink-soft)]">{!ready || hasAccess === null ? 'Checking access…' : 'Available after payment'}</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <div className="space-y-4">
         {course.lessons.map((lesson, i) => (
@@ -83,7 +115,7 @@ function CoursePage() {
           </h2>
           <p className="font-sans text-sm text-[var(--ink-soft)] mb-6">
             One payment gives you lifetime access to every course, lesson, and
-            practice test.
+            study document.
           </p>
           <AccessButton />
         </div>

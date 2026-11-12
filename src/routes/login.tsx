@@ -34,7 +34,7 @@ function LoginPage() {
         navigate({ to: '/courses' })
       } else {
         const created = await signup(email, password, { full_name: name })
-        if (created.emailVerified) {
+        if (created.confirmedAt) {
           navigate({ to: '/courses' })
         } else {
           setNotice(`Confirmation email sent to ${email}. Click the link to finish signing up.`)
