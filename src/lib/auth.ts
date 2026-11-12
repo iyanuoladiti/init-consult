@@ -6,6 +6,6 @@ export type { User as IdentityUser }
 export const getServerUser = createServerFn({ method: 'GET' }).handler(
   async () => {
     const user = await getUser()
-    return (user ?? null) as User | null
+    return user ? { id: user.id, email: user.email, name: user.name } : null
   },
 )

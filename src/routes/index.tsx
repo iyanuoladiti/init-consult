@@ -12,7 +12,7 @@ function LandingPage() {
       <section className="max-w-6xl mx-auto px-6 pt-16 pb-20 grid md:grid-cols-[1.1fr_0.9fr] gap-12 items-end">
         <div className="rise">
           <p className="font-sans text-xs tracking-[0.2em] uppercase text-[var(--ember)] mb-4">
-            Practice courses &amp; timed tutorials
+            Course notes &amp; exam preparation
           </p>
           <h1 className="font-display text-5xl sm:text-6xl leading-[1.05] mb-6">
             Study with intent.
@@ -20,8 +20,8 @@ function LandingPage() {
             <span className="italic text-[var(--ember)]">Test</span> with confidence.
           </h1>
           <p className="font-sans text-lg text-[var(--ink-soft)] max-w-xl mb-8">
-            Short, structured lessons and timed practice tests for your general
-            studies courses. Preview every course for free — unlock the full
+            Biology, chemistry, physics, and general studies materials,
+            including past questions and explained answers. Preview every course for free — unlock the full
             library with a single one-time payment.
           </p>
           <div className="flex flex-wrap items-center gap-4">
@@ -47,7 +47,7 @@ function LandingPage() {
           </div>
           <ul className="font-sans text-sm text-[var(--ink-soft)] space-y-2 mt-6">
             <li>— Full lesson library for every course</li>
-            <li>— Timed practice tests, no limit</li>
+            <li>— Downloadable past questions and study documents</li>
             <li>— Lifetime access, no subscription</li>
           </ul>
         </div>
@@ -79,7 +79,7 @@ function LandingPage() {
                 {course.tagline}
               </p>
               <p className="font-sans text-xs text-[var(--ink-soft)] mt-4">
-                {course.lessons.length} lessons
+                {course.materials?.length ?? course.lessons.length} {course.materials ? 'study documents' : 'lessons'}
               </p>
             </Link>
           ))}
