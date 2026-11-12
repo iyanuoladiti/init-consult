@@ -1,0 +1,2 @@
+export const FULL_ACCESS_PRICE_NGN = 15_000
+export const FULL_ACCESS_PRICE_LABEL = '₦15,000'

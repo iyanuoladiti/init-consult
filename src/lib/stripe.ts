@@ -1,7 +1,7 @@
 import { createServerFn } from '@tanstack/react-start'
 import { requireAuthMiddleware } from '../middleware/identity'
 
-const FULL_ACCESS_PRICE_USD = 15
+import { FULL_ACCESS_PRICE_NGN } from './pricing'
 
 export const getStripeEnabled = createServerFn({ method: 'GET' }).handler(
   () => !!process.env.STRIPE_SECRET_KEY,
@@ -25,13 +25,13 @@ export const createCheckoutSession = createServerFn({ method: 'POST' })
       line_items: [
         {
           price_data: {
-            currency: 'usd',
+            currency: 'ngn',
             product_data: {
-              name: 'Full Course Access',
+              name: 'INIT Educational Consultant — Full Study Access',
               description:
-                'Lifetime access to every tutorial, course, and practice test on the platform.',
+                'Lifetime access to INIT course notes, past questions, answers, and downloadable study materials.',
             },
-            unit_amount: FULL_ACCESS_PRICE_USD * 100,
+            unit_amount: FULL_ACCESS_PRICE_NGN * 100,
           },
           quantity: 1,
         },
@@ -44,4 +44,4 @@ export const createCheckoutSession = createServerFn({ method: 'POST' })
     return session.url
   })
 
-export { FULL_ACCESS_PRICE_USD }
+export { FULL_ACCESS_PRICE_NGN }
